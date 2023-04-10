@@ -76,6 +76,8 @@ GEM
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 7.1)
     erubi (1.12.0)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -194,6 +196,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   devise_token_auth
+  figaro
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
