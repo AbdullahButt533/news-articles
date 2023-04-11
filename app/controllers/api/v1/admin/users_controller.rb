@@ -5,20 +5,20 @@ class Api::V1::Admin::UsersController < Api::V1::Admin::ApplicationController
 
   def index
     @users = User.all
-    render json: @users
+    respond_with @users
   end
 
   def show
-    render json: @user
+    respond_with @user
   end
 
   def create
     @user = User.new(user_params)
-    render json: @user, status: :created if @user.save!
+    respond_with @user if @user.save!
   end
 
   def update
-    render json: @user if @user.update!(user_params)
+    respond_with @user if @user.update!(user_params)
   end
 
   def destroy
