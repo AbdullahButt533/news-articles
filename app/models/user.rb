@@ -10,4 +10,12 @@ class User < ApplicationRecord
 
   enum role: { reader: 0, admin: 1 }
   enum admin_request_status: { not_required: 0, requested: 1, accepted: 2, rejected: 3 }
+
+  def active_for_authentication?
+    super && active_user?
+  end
+
+  def active_user?
+    not_required? || accepted?
+  end
 end
