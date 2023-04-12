@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         resources :topics, only: [:create, :update, :destroy]
       end
       resources :topics, only: [:index, :show]
+      resources :authors, only: [:index, :show]
     end
   end
 end
