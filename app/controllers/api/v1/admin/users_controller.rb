@@ -4,8 +4,8 @@ class Api::V1::Admin::UsersController < Api::V1::Admin::ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   def index
-    @users = User.all
-    respond_with @users
+    users = User.page(page).per(per_page)
+    respond_with users, meta: build_meta(users)
   end
 
   def show

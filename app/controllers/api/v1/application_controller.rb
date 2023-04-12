@@ -2,6 +2,7 @@
 
 class Api::V1::ApplicationController < ApplicationController
   include ErrorHandler
+  include MetaPaginator
 
   respond_to :json
 
