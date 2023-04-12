@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :admin do
         resources :users
+        resources :topics, only: [:create, :update, :destroy]
       end
       resources :topics, only: [:index, :show]
     end
