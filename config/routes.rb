@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       namespace :admin do
         resources :users
       end
+      resources :topics, only: [:index, :show]
     end
   end
 end
