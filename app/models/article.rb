@@ -7,4 +7,11 @@ class Article < ApplicationRecord
 
   belongs_to :author, optional: true
   belongs_to :topic, optional: true
+
+  def self.eager_load_options
+    [
+      :author,
+      :topic
+    ]
+  end
 end
