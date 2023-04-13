@@ -12,6 +12,12 @@ class Api::V1::ArticlesController < Api::V1::ApplicationController
     respond_with @article
   end
 
+  def live_articles_search
+    options = NewsArticles::ParamsBuilder.new(params).build_options
+    result = NewsArticles::Search.new(options).live_articles
+    render json: JSON.parse(result.body), status: result.code
+  end
+
   private
 
   def set_article
