@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_12_014241) do
+ActiveRecord::Schema.define(version: 2023_04_12_202813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.jsonb "source", default: {}
+    t.text "description"
+    t.string "url", null: false
+    t.string "url_to_image"
+    t.text "content"
+    t.datetime "published_at"
+    t.bigint "topic_id"
+    t.bigint "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_articles_on_author_id"
+    t.index ["topic_id"], name: "index_articles_on_topic_id"
+    t.index ["url"], name: "index_articles_on_url", unique: true
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string "name", null: false
@@ -53,4 +69,6 @@ ActiveRecord::Schema.define(version: 2023_04_12_014241) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "articles", "authors"
+  add_foreign_key "articles", "topics"
 end
