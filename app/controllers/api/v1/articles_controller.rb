@@ -13,8 +13,7 @@ class Api::V1::ArticlesController < Api::V1::ApplicationController
   end
 
   def live_articles_search
-    options = NewsArticles::ParamsBuilder.new(params).build_options
-    result = NewsArticles::Search.new(options).live_articles
+    result = NewsArticles::Search.new(params).everything
     render json: JSON.parse(result.body), status: result.code
   end
 

@@ -26,6 +26,8 @@ class NewsArticles::ParamsBuilder
       sortBy: params[:sortBy],
       pageSize: params[:pageSize],
       page: params[:page],
+      country: params[:country],
+      category: params[:category],
     }
   end
 end

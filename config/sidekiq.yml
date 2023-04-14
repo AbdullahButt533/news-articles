@@ -1,0 +1,15 @@
+development:
+  :concurrency: 5
+production:
+  :concurrency: <%= ENV['SIDEKIQ_MAX_THREADS'] || 10 %>
+:queues:
+  - default
+:scheduler:
+  :enabled: true
+  :schedule:
+    check_imran_khan_news:
+      cron: "0 17 */2 * *"
+      class: CheckImranKhanNewsWorker
+    top_business_headlines:
+      cron: "0 */3 * * *"
+      class: TopBusinessHeadlinesWorker

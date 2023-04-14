@@ -1,16 +1,20 @@
 # frozen_string_literal: true
 
-class NewsArticles::Search
-  EVERYTHING_PATH = 'everything'
+require 'net/http'
 
+class NewsArticles::Search
   attr_accessor :params
 
   def initialize(params = {})
-    @params = params
+    @params = NewsArticles::ParamsBuilder.new(params).build_options
   end
 
-  def live_articles
-    make_request(build_url(EVERYTHING_PATH))
+  def everything
+    make_request(build_url(Article::EVERYTHING_PATH))
+  end
+
+  def top_headlines
+    make_request(build_url(Article::TOP_HEADLINES_PATH))
   end
 
   private
