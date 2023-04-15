@@ -35,6 +35,7 @@ class NewsArticles::BatchProcessor
     return if parsed_articles.empty?
 
     Article.upsert_all(parsed_articles, unique_by: [:url])
+    SendInBlue::SendEmailToContacts.perform_later
   end
 
   def news_api
