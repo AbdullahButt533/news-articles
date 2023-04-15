@@ -14,6 +14,7 @@ gem 'active_model_serializers'
 gem 'devise_token_auth'
 gem 'kaminari'
 gem 'puma', '~> 4.1'
+gem 'sib-api-v3-sdk'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
