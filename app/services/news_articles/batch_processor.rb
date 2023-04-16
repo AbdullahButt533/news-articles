@@ -23,15 +23,14 @@ class NewsArticles::BatchProcessor
       params[:page] = page
       data = fetch_data
       result = data && JSON.parse(data.body)['articles']
+      @articles += result if result.present?
 
-      break if result.blank?
+      break if result.blank? || result.size < params[:pageSize]
 
-      @articles += result
       page += 1
     end
 
     parsed_articles = parse_data
-
     return if parsed_articles.empty?
 
     Article.upsert_all(parsed_articles, unique_by: [:url])
@@ -52,13 +51,14 @@ class NewsArticles::BatchProcessor
     @articles.map do |article|
       title = article['title']
       author = article['author']
+      published_at = article['publishedAt']
 
       {
         topic_id: title.present? ? Topic.find_or_create_by(title: title).id : nil,
         author_id: author.present? ? Author.find_or_create_by(name: author).id : nil,
         description: article['description'],
         url: article['url'],
-        published_at: DateTime.parse(article['publishedAt']),
+        published_at: published_at.present? ? DateTime.parse(article['publishedAt']) : nil,
         content: article['content'],
         url_to_image: article['urlToImage'],
         source: article['source'],

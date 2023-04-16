@@ -21,7 +21,7 @@ class SendInBlue::EmailCompaign
     {
       name: 'News Articles',
       subject: 'Latest News Articles',
-      sender: { name: 'dev-test', email: 'butt.abdullah.705@gmail.com' },
+      sender: { name: 'dev-test', email: ENV['SMTP_USERNAME'] },
       recipients: { listIds: LIST_IDS },
       htmlContent: compaign_body,
     }

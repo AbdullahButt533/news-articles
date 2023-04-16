@@ -32,6 +32,6 @@ class Api::V1::Admin::UsersController < Api::V1::Admin::ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :role, :admin_request_status)
+    params.require(:user).permit(:email, :password, :role, :admin_request_status, :confirmed_at)
   end
 end
