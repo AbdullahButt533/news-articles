@@ -43,6 +43,15 @@ group :development, :test do
   gem 'rubocop-rails', require: false
 end
 
+group :test do
+  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'webmock'
+end
+
 group :development do
 end
 
