@@ -8,6 +8,9 @@
 ### ERD
  - You can find ERD here https://drive.google.com/file/d/1C4U1bhUWnZvPTd0D1s2UfUFRspIeFaU5/view?usp=share_link
 
+ ### DEPLOYMENT
+ - As Heroku is not providing free services now, I could not deploy the application. 
+Furthermore, I've researched how to deploy the application for free. There was a couple of options `fly.io` and `aws free tier`. But these both required credit card details
  ### GITHUB REPO
  - https://github.com/AbdullahButt533/news-articles.git
    It's a private repo. Please use your token to fetch repo 
